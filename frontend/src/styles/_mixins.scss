@@ -1,0 +1,92 @@
+@use 'variables' as *;
+
+// Mixin pour les transitions
+@mixin transition($property, $duration) {
+  transition: $property $duration;
+}
+
+// Mixin pour les breakpoints responsives
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Mixin pour les boutons de base
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 500;
+  cursor: pointer;
+  @include transition(all, $transition-normal);
+  
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Mixin pour les boutons primaires
+@mixin button-primary {
+  @include button-base;
+  background-color: $color-primary;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  
+  &:hover {
+    background-color: darken($color-primary, 10%);
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Mixin pour les cartes de base
+@mixin card-base {
+  background-color: white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: 2rem;
+  @include transition(all, $transition-normal);
+  
+  &:hover {
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Mixin pour les inputs de base
+@mixin input-base {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: $radius-md;
+  font-size: 0.875rem;
+  @include transition(border-color, $transition-normal);
+  
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+  
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+// Mixin pour les gradients primaires
+@mixin gradient-primary {
+  background: linear-gradient(135deg, $color-primary 0%, darken($color-primary, 15%) 100%);
+} 

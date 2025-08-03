@@ -1,0 +1,72 @@
+{
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Connectez-vous à votre compte",
+      "submit": "Se connecter"
+    },
+    "register": {
+      "title": "Inscription",
+      "subtitle": "Créez votre compte", 
+      "submit": "S'inscrire"
+    },
+    "fields": {
+      "nom": "Nom",
+      "prenom": "Prénom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
+    },
+    "placeholders": {
+      "nom": "Votre nom",
+      "prenom": "Votre prénom",
+      "email": "votre@email.com",
+      "password": "••••••••"
+    },
+    "buttons": {
+      "switchToRegister": "Pas encore de compte ? S'inscrire",
+      "switchToLogin": "Déjà un compte ? Se connecter",
+      "loading": "Chargement..."
+    },
+    "errors": {
+      "required": "Ce champ est requis",
+      "invalidEmail": "Email invalide",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "generic": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue",
+    "subtitle": "dans votre espace personnel",
+    "userInfo": "Informations personnelles",
+    "greeting": "Bonjour",
+    "greetingSubtitle": "Ravi de vous revoir sur notre plateforme",
+    "logout": "Se déconnecter",
+    "stats": "Statistiques",
+    "actions": "Actions",
+    "fields": {
+      "fullName": "Nom complet",
+      "email": "Email",
+      "memberSince": "Membre depuis",
+      "userId": "ID utilisateur",
+      "status": "Statut"
+    },
+    "status": {
+      "active": "Actif"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
+  "theme": {
+    "dark": "Mode sombre",
+    "light": "Mode clair",
+    "toggle": "Basculer le thème"
+  }
+} 

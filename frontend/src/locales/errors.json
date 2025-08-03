@@ -1,0 +1,41 @@
+{
+  "auth": {
+    "login": {
+      "invalidCredentials": "Email ou mot de passe incorrect",
+      "userNotFound": "Utilisateur non trouvé",
+      "accountLocked": "Compte temporairement verrouillé"
+    },
+    "register": {
+      "emailAlreadyExists": "Cet email est déjà utilisé",
+      "weakPassword": "Le mot de passe est trop faible",
+      "invalidEmail": "Format d'email invalide"
+    },
+    "validation": {
+      "emailRequired": "Email requis",
+      "passwordRequired": "Mot de passe requis",
+      "nomRequired": "Nom requis",
+      "prenomRequired": "Prénom requis",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "emailAndPasswordRequired": "Email et mot de passe requis",
+      "nomAndPrenomRequired": "Nom et prénom requis"
+    },
+    "generic": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "network": {
+    "connectionError": "Erreur de connexion au serveur",
+    "timeout": "Délai d'attente dépassé",
+    "serverError": "Erreur serveur"
+  },
+  "validation": {
+    "required": "Ce champ est obligatoire",
+    "minLength": "Minimum {min} caractères requis",
+    "maxLength": "Maximum {max} caractères autorisés",
+    "invalidFormat": "Format invalide"
+  },
+  "general": {
+    "unknown": "Une erreur inattendue s'est produite",
+    "permissionDenied": "Accès refusé",
+    "notFound": "Ressource non trouvée"
+  }
+} 
