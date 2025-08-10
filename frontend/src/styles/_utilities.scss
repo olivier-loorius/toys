@@ -1,0 +1,103 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+// Layout principal
+.main-content {
+  padding-top: 2rem;
+  min-height: calc(100vh - 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Grille responsive
+.grid-modern {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+// Cards simples
+.card-modern {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Boutons
+.btn-modern {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  @extend .btn-modern;
+  background: $color-primary;
+  color: white;
+  
+  &:hover {
+    background: color.adjust($color-primary, $lightness: -10%);
+  }
+}
+
+.btn-secondary {
+  @extend .btn-modern;
+  background: transparent;
+  color: $color-secondary;
+  border: 2px solid $color-secondary;
+  
+  &:hover {
+    background: $color-secondary;
+    color: white;
+  }
+}
+
+// Formulaires
+.form-modern {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

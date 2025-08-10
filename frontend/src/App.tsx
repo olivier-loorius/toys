@@ -3,7 +3,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
-import ThemeToggle from './components/ThemeToggle';
+import Navbar from './components/Navbar';
 import { useAuth } from './contexts/AuthContext';
 
 const AppContent: React.FC = () => {
@@ -22,8 +22,10 @@ const AppContent: React.FC = () => {
 
   return (
     <>
-      <ThemeToggle />
-      {user ? <Dashboard /> : <AuthForm />}
+      <Navbar />
+      <main className="main-content">
+        {user ? <Dashboard /> : <AuthForm />}
+      </main>
     </>
   );
 };

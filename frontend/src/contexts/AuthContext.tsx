@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../config/supabase';
-import type { AuthUser, SignUpData, SignInData } from '../config/supabase';
+import type { AuthUser } from '../config/supabase';
 
 interface AuthContextType {
   user: AuthUser | null;
@@ -23,20 +23,39 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Récupérer les données depuis localStorage au démarrage
-    const savedUser = localStorage.getItem('user');
-    const savedToken = localStorage.getItem('token');
+    // Récupérer la session initiale
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        // Récupérer les données utilisateur depuis la base de données
+        supabase
+          .from('users')
+          .select('*')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data: userData, error }) => {
+            if (userData && !error) {
+              const authUser: AuthUser = {
+                id: userData.id,
+                email: userData.email,
+                nom: userData.nom,
+                prenom: userData.prenom,
+                created_at: userData.created_at
+              };
+              setUser(authUser);
+              setToken(session.access_token || null);
+            }
+            setIsLoading(false);
+          });
+      } else {
+        setIsLoading(false);
+      }
+    });
 
-    if (savedUser && savedToken) {
-      setUser(JSON.parse(savedUser));
-      setToken(savedToken);
-    }
-
-    setIsLoading(false);
-
-    // Écouter les changements d'authentification Supabase
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+    // Écouter les changements d'authentification
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(
+      async (_, session) => {
         if (session?.user) {
           // Récupérer les données utilisateur depuis la base de données
           const { data: userData, error } = await supabase
@@ -53,17 +72,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
               prenom: userData.prenom,
               created_at: userData.created_at
             };
-
             setUser(authUser);
-            setToken(session.access_token);
-            localStorage.setItem('user', JSON.stringify(authUser));
-            localStorage.setItem('token', session.access_token);
+            setToken(session.access_token || null);
           }
         } else {
           setUser(null);
           setToken(null);
-          localStorage.removeItem('user');
-          localStorage.removeItem('token');
         }
         setIsLoading(false);
       }

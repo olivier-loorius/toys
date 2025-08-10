@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstration Navbar - Toys</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .demo-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #08415C;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .demo-section h2 {
+            color: #DE8F6E;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+
+        .navbar-preview {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .navbar-preview h3 {
+            color: #08415C;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .navbar-mockup {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 2px solid #DE8F6E;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #DE8F6E;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 2px solid #08415C;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #DE8F6E;
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: #08415C;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(222, 143, 110, 0.1);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #08415C;
+            transition: background-color 0.3s;
+        }
+
+        .action-button:hover {
+            background-color: rgba(222, 143, 110, 0.1);
+        }
+
+        .cart-count {
+            background: #DE8F6E;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .cart-button {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .navbar-mockup {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">🎯 Démonstration de la Navbar Toys</h1>
+        
+        <div class="demo-section">
+            <h2>🚀 Fonctionnalités implémentées</h2>
+            <ul class="feature-list">
+                <li>Logo cliquable avec redirection vers la page d'accueil</li>
+                <li>Barre de recherche avec placeholder dynamique via fr.json</li>
+                <li>Icône panier avec compteur d'articles (3 articles)</li>
+                <li>Icône profil/compte utilisateur</li>
+                <li>Navigation principale (catégories, promotions, nouveautés)</li>
+                <li>Bouton hamburger responsive sur mobile</li>
+                <li>Menu mobile avec animation slide-down</li>
+                <li>Design mobile-first et responsive</li>
+                <li>Accessibilité ARIA complète</li>
+                <li>Styles SCSS modulaires avec méthodologie BEM</li>
+            </ul>
+        </div>
+
+        <div class="navbar-preview">
+            <h3>📱 Aperçu de la Navbar</h3>
+            <div class="navbar-mockup">
+                <div class="logo">Toys</div>
+                
+                <div class="search-bar">
+                    <input type="search" class="search-input" placeholder="Rechercher un produit...">
+                    <button class="search-button">🔍</button>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="/categories" class="nav-link">Catégories</a>
+                    <a href="/offers" class="nav-link">Promotions</a>
+                    <a href="/new" class="nav-link">Nouveautés</a>
+                </nav>
+                
+                <div class="actions">
+                    <button class="action-button" title="Mon compte">👤</button>
+                    <button class="action-button cart-button" title="Panier">
+                        🛒
+                        <span class="cart-count">3</span>
+                    </button>
+                    <button class="action-button" title="Menu">☰</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📋 Instructions de test</h2>
+            <ul class="feature-list">
+                <li><strong>Desktop :</strong> Redimensionnez la fenêtre pour voir le menu complet</li>
+                <li><strong>Mobile :</strong> Utilisez les outils de développement pour simuler un mobile</li>
+                <li><strong>Accessibilité :</strong> Testez avec un lecteur d'écran</li>
+                <li><strong>Responsive :</strong> Breakpoint à 768px</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔧 Structure des fichiers créés</h2>
+            <ul class="feature-list">
+                <li><code>src/components/Navbar/Navbar.tsx</code> - Composant principal React</li>
+                <li><code>src/components/Navbar/Navbar.scss</code> - Styles SCSS modulaires</li>
+                <li><code>src/components/Navbar/index.ts</code> - Export du composant</li>
+                <li><code>src/components/Navbar/NavbarDemo.tsx</code> - Composant de démonstration</li>
+                <li><code>src/components/Navbar/README.md</code> - Documentation complète</li>
+                <li><code>src/locales/fr.json</code> - Traductions mises à jour</li>
+                <li><code>src/styles/main.scss</code> - Import des styles navbar</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎨 Caractéristiques du design</h2>
+            <ul class="feature-list">
+                <li><strong>Couleurs :</strong> Primaire (#DE8F6E), Secondaire (#08415C)</li>
+                <li><strong>Breakpoints :</strong> Mobile-first, 768px pour desktop</li>
+                <li><strong>Animations :</strong> Transitions fluides (0.3s ease)</li>
+                <li><strong>Méthodologie :</strong> BEM pour les classes CSS</li>
+                <li><strong>Accessibilité :</strong> Attributs ARIA et navigation sémantique</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

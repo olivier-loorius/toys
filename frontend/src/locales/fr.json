@@ -1,40 +1,44 @@
 {
+  "errors": {
+    "auth": {
+      "invalid_credentials": "Identifiants invalides",
+      "user_not_found": "Utilisateur non trouvé",
+      "email_already_exists": "Cet email est déjà utilisé",
+      "weak_password": "Le mot de passe est trop faible",
+      "network_error": "Erreur de réseau",
+      "unknown_error": "Une erreur inconnue s'est produite"
+    },
+    "form": {
+      "required_field": "Ce champ est requis",
+      "invalid_email": "Email invalide",
+      "password_too_short": "Le mot de passe doit contenir au moins 6 caractères",
+      "passwords_dont_match": "Les mots de passe ne correspondent pas"
+    }
+  },
   "auth": {
     "login": {
       "title": "Connexion",
-      "subtitle": "Connectez-vous à votre compte",
-      "submit": "Se connecter"
-    },
-    "register": {
-      "title": "Inscription",
-      "subtitle": "Créez votre compte", 
-      "submit": "S'inscrire"
-    },
-    "fields": {
-      "nom": "Nom",
-      "prenom": "Prénom",
       "email": "Email",
       "password": "Mot de passe",
-      "confirmPassword": "Confirmer le mot de passe"
+      "submit": "Se connecter",
+      "forgot_password": "Mot de passe oublié ?",
+      "no_account": "Pas de compte ?",
+      "signup_link": "S'inscrire"
     },
-    "placeholders": {
-      "nom": "Votre nom",
-      "prenom": "Votre prénom",
-      "email": "votre@email.com",
-      "password": "••••••••"
+    "signup": {
+      "title": "Inscription",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirm_password": "Confirmer le mot de passe",
+      "submit": "S'inscrire",
+      "has_account": "Déjà un compte ?",
+      "login_link": "Se connecter"
     },
-    "buttons": {
-      "switchToRegister": "Pas encore de compte ? S'inscrire",
-      "switchToLogin": "Déjà un compte ? Se connecter",
-      "loading": "Chargement..."
-    },
-    "errors": {
-      "required": "Ce champ est requis",
-      "invalidEmail": "Email invalide",
-      "passwordMismatch": "Les mots de passe ne correspondent pas",
-      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
-      "generic": "Une erreur est survenue. Veuillez réessayer."
-    }
+    "logout": "Se déconnecter",
+    "profile": "Mon profil",
+    "settings": "Paramètres"
   },
   "dashboard": {
     "title": "Tableau de bord",
@@ -68,5 +72,18 @@
     "dark": "Mode sombre",
     "light": "Mode clair",
     "toggle": "Basculer le thème"
+  },
+  "navbar": {
+    "logoAlt": "Logo du site Toys",
+    "searchPlaceholder": "Rechercher un produit...",
+    "cart": "Panier",
+    "account": "Mon compte",
+    "categories": "Catégories",
+    "offers": "Promotions",
+    "new": "Nouveautés",
+    "login": "Se connecter",
+    "profile": "Mon profil",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter"
   }
 } 

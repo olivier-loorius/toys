@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { t, getError } from '../utils/i18n';
+import './AuthForm.scss';
 
 interface FormData {
   nom: string;
@@ -33,13 +34,11 @@ const AuthForm: React.FC = () => {
   };
 
   const validateForm = (): boolean => {
-    // Validation de base
     if (!formData.email || !formData.password) {
       setErrorMessage(getError('auth.validation.emailAndPasswordRequired'));
       return false;
     }
 
-    // Validation spécifique à l'inscription
     if (!isLoginMode) {
       if (!formData.nom || !formData.prenom) {
         setErrorMessage(getError('auth.validation.nomAndPrenomRequired'));
@@ -100,143 +99,102 @@ const AuthForm: React.FC = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <div className="text-center mb-6">
-          <h2 className="text-3xl mb-2">
-            {isLoginMode ? t('auth.login.title') : t('auth.register.title')}
-          </h2>
-          <p className="lead">
-            {isLoginMode ? t('auth.login.subtitle') : t('auth.register.subtitle')}
-          </p>
+        <div className="auth-header">
+          <h1>{isLoginMode ? t('auth.login.title') : t('auth.register.title')}</h1>
+          <p>{isLoginMode ? t('auth.login.subtitle') : t('auth.register.subtitle')}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {errorMessage && (
-            <div className="error-message">
-              {errorMessage}
-            </div>
-          )}
-
-          {/* Champs nom et prénom (inscription uniquement) */}
+        <form className="auth-form" onSubmit={handleSubmit}>
           {!isLoginMode && (
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="prenom" className="form-label">
-                  {t('auth.fields.prenom')} *
-                </label>
+            <>
+              <div className="form-group">
+                <label className="form-label">{t('auth.fields.nom')}</label>
                 <input
-                  id="prenom"
-                  name="prenom"
                   type="text"
-                  required
-                  value={formData.prenom}
-                  onChange={handleInputChange}
-                  className="form-input"
-                  placeholder={t('auth.placeholders.prenom')}
-                  autoComplete="given-name"
-                />
-              </div>
-              <div>
-                <label htmlFor="nom" className="form-label">
-                  {t('auth.fields.nom')} *
-                </label>
-                <input
-                  id="nom"
                   name="nom"
-                  type="text"
-                  required
+                  className="form-input"
                   value={formData.nom}
                   onChange={handleInputChange}
-                  className="form-input"
-                  placeholder={t('auth.placeholders.nom')}
-                  autoComplete="family-name"
+                  required
                 />
               </div>
-            </div>
+              
+              <div className="form-group">
+                <label className="form-label">{t('auth.fields.prenom')}</label>
+                <input
+                  type="text"
+                  name="prenom"
+                  className="form-input"
+                  value={formData.prenom}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            </>
           )}
 
-          {/* Champ email */}
-          <div>
-            <label htmlFor="email" className="form-label">
-              {t('auth.fields.email')} *
-            </label>
+          <div className="form-group">
+            <label className="form-label">{t('auth.fields.email')}</label>
             <input
-              id="email"
-              name="email"
               type="email"
-              required
+              name="email"
+              className="form-input"
               value={formData.email}
               onChange={handleInputChange}
-              className="form-input"
-              placeholder={t('auth.placeholders.email')}
-              autoComplete="email"
+              required
             />
           </div>
 
-          {/* Champ mot de passe */}
-          <div>
-            <label htmlFor="password" className="form-label">
-              {t('auth.fields.password')} *
-            </label>
+          <div className="form-group">
+            <label className="form-label">{t('auth.fields.password')}</label>
             <input
-              id="password"
-              name="password"
               type="password"
-              required
+              name="password"
+              className="form-input"
               value={formData.password}
               onChange={handleInputChange}
-              className="form-input"
-              placeholder={t('auth.placeholders.password')}
-              autoComplete={isLoginMode ? "current-password" : "new-password"}
+              required
             />
           </div>
 
-          {/* Champ confirmation mot de passe (inscription uniquement) */}
           {!isLoginMode && (
-            <div>
-              <label htmlFor="confirmPassword" className="form-label">
-                {t('auth.fields.confirmPassword')} *
-              </label>
+            <div className="form-group">
+              <label className="form-label">{t('auth.fields.confirmPassword')}</label>
               <input
-                id="confirmPassword"
-                name="confirmPassword"
                 type="password"
-                required
+                name="confirmPassword"
+                className="form-input"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-                className="form-input"
-                placeholder={t('auth.placeholders.password')}
-                autoComplete="new-password"
+                required
               />
             </div>
           )}
 
-          {/* Bouton de soumission */}
+          {errorMessage && (
+            <div className="form-error">
+              {errorMessage}
+            </div>
+          )}
+
           <button
             type="submit"
+            className="btn-primary"
             disabled={isSubmitting}
-            className="submit-btn"
           >
-            {isSubmitting ? (
-              <>
-                <span className="spinner mr-2"></span>
-                {t('auth.buttons.loading')}
-              </>
-            ) : (
-              isLoginMode ? t('auth.login.submit') : t('auth.register.submit')
-            )}
+            {isSubmitting ? t('common.loading') : (isLoginMode ? t('auth.login.submit') : t('auth.register.submit'))}
           </button>
-
-          {/* Bouton de basculement mode */}
-          <div className="text-center mt-4">
-            <button
-              type="button"
-              onClick={toggleMode}
-              className="btn btn--secondary"
-            >
-              {isLoginMode ? t('auth.buttons.switchToRegister') : t('auth.buttons.switchToLogin')}
-            </button>
-          </div>
         </form>
+
+        <div className="auth-toggle">
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={toggleMode}
+          >
+            {isLoginMode ? t('auth.login.switchToRegister') : t('auth.register.switchToLogin')}
+          </button>
+        </div>
       </div>
     </div>
   );
