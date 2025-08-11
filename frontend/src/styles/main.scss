@@ -1,8 +1,42 @@
-// Import des variables et mixins
+/* Import des variables et composants en premier */
 @use 'variables' as *;
-@use 'mixins' as *;
-@use 'base' as *;
-@use 'utilities' as *;
+@use '../components/Navbar/Navbar.scss';
 
-// Import des composants
-@use '../components/Navbar/Navbar.scss'; 
+/* RESET CSS COMPLET - SUPPRIMER TOUTES LES MARGES */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+  background-color: #01192b;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* SUPPRIMER LES MARGES DU CONTENU PRINCIPAL */
+.main-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-height: calc(100vh - 80px) !important; /* Hauteur totale moins navbar */
+} 

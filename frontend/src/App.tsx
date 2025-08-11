@@ -1,7 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
-import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 import { useAuth } from './contexts/AuthContext';
@@ -24,7 +23,7 @@ const AppContent: React.FC = () => {
     <>
       <Navbar />
       <main className="main-content">
-        {user ? <Dashboard /> : <AuthForm />}
+        {user && <Dashboard />}
       </main>
     </>
   );
